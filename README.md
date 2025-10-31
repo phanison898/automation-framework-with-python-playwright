@@ -1,0 +1,1 @@
+## High Level QA Automation Framework with Python & Playwright
