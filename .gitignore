@@ -1,0 +1,70 @@
+# -------------------------------
+# Python Playwright + Pytest .gitignore
+# -------------------------------
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.venv/
+env/
+ENV/
+pip-wheel-metadata/
+*.egg-info/
+
+# Playwright specific
+playwright-report/
+test-results/
+videos/
+screenshots/
+trace.zip
+.traces/
+.traces/
+.traces/*.zip
+
+# Pytest cache and logs
+.pytest_cache/
+.coverage
+htmlcov/
+.cache/
+*.log
+
+# Jupyter notebooks
+.ipynb_checkpoints
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment & secrets
+*.env
+.env.*
+config.json
+
+# Distribution / packaging
+build/
+dist/
+.eggs/
+MANIFEST
+
+# Temp files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# Reports and generated test artifacts
+reports/
+allure-results/
+allure-report/
