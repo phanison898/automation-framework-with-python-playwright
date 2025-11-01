@@ -1,5 +1,5 @@
 {
-    "browser":"chromium",
+    "browser":"chrome",
     "url":"https://practicetestautomation.com/practice-test-login/",
     "headless":false,
     "username":"student",

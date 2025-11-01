@@ -19,10 +19,16 @@ def pw_instance():
 def browser(pw_instance, config):
     browser_type = config.get("browser","chromium")
     headless = config.get("headless",False)
-    if browser_type == "chromium":
-        browser = pw_instance.chromium.launch(headless=headless)
+    launch_args = {
+        "headless": headless,        
+        "args": ["--start-maximized"]
+    }
+    if browser_type == "chrome":
+        browser = pw_instance.chromium.launch(channel="chrome", **launch_args)
+    elif browser_type == "msedge":
+        browser = pw_instance.chromium.launch(channel="msedge", **launch_args)
     elif browser_type == "firefox":
-        browser = pw_instance.firefox.launch(headless=headless)
+        browser = pw_instance.firefox.launch(**launch_args)
     else:
         raise ValueError(f"Unsupported browser type: {browser_type}")
     yield browser
@@ -30,7 +36,7 @@ def browser(pw_instance, config):
 
 @pytest.fixture(scope="function")
 def context(browser):
-    context = browser.new_context()
+    context = browser.new_context(no_viewport=True)
     yield context
     context.close()
 
