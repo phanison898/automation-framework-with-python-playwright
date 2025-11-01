@@ -1,0 +1,7 @@
+{
+    "browser":"chromium",
+    "url":"https://practicetestautomation.com/practice-test-login/",
+    "headless":false,
+    "username":"student",
+    "password":"Password123"
+}

@@ -6,3 +6,18 @@
     venv\Scripts\activate               # Windows
     source venv/bin/activate            # Linux/Mac
 ```
+
+### Install packages
+```bash
+    pip install -r requirements.txt
+```
+
+### Install playwright browsers (chromium, firefox, webkit)
+```bash
+    playwright install
+```
+
+### Run tests
+```bash
+    pytest
+```

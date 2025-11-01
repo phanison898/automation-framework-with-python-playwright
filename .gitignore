@@ -49,7 +49,6 @@ Thumbs.db
 # Environment & secrets
 *.env
 .env.*
-config.json
 
 # Distribution / packaging
 build/
