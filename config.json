@@ -3,5 +3,6 @@
     "url":"https://practicetestautomation.com/practice-test-login/",
     "headless":false,
     "username":"student",
-    "password":"Password123"
+    "password":"Password123",
+    "invalid_password":"password123"
 }
