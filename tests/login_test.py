@@ -1,28 +1,39 @@
+import allure
 from pages.login_page import LoginPage
 from tests.base_test import TestBase
 
+@allure.title("Test Login Functionality")
 class TestLogin(TestBase):
+
+    @allure.title("Valid credentials")
     def test_valid_login(self):
-        self.data = self.excel.get("login","valid credentials")
+        key = "valid credentials"
+        self.data = self.excel.get("login",key)
         self.login_page = LoginPage(self.page)
-        self.logged_in_page = self.login_page.valid_login(self.data["username"],self.data["password"])
-        assert "Logged In Successfully" in self.logged_in_page.get_logged_in_success_text(), "Expected text 'Logged In Successfully' not found"
+        self.logged_in_page = self.login_page.enterValidCredentials(self.data["username"],self.data["password"])
+        assert self.logged_in_page.get_logged_in_success_text() in self.data['validation'], f"Expected text {self.data['validation']} not found for {key}"
     
+    @allure.title("Invalid username")
     def test_invalid_username(self):
-        self.data = self.excel.get("login","invalid username")
+        key = "invalid username"
+        self.data = self.excel.get("login",key)
         self.login_page = LoginPage(self.page)
-        is_error_toast_displayed = self.login_page.invalid_login(self.data["username"],self.data["password"])
-        assert is_error_toast_displayed, "Error toast not found for invalid username"
+        error_text = self.login_page.enterInvalidCredentials(self.data["username"],self.data["password"])
+        assert error_text in self.data["validation"], f"Error toast not found for {key}"
 
+    @allure.title("Invalid password")
     def test_invalid_password(self):
-        self.data = self.excel.get("login","invalid password")
+        key = "invalid password"
+        self.data = self.excel.get("login",key)
         self.login_page = LoginPage(self.page)
-        is_error_toast_displayed = self.login_page.invalid_login(self.data["username"],self.data["password"])
-        assert is_error_toast_displayed, "Error toast not found for invalid password"
+        error_text = self.login_page.enterInvalidCredentials(self.data["username"],self.data["password"])
+        assert error_text in self.data["validation"], f"Error toast not found for {key}"
 
+    @allure.title("Invalid credentials")
     def test_invalid_login(self):
-        self.data = self.excel.get("login","invalid credentials")
+        key = "invalid credentials"
+        self.data = self.excel.get("login",key)
         self.login_page = LoginPage(self.page)
-        is_error_toast_displayed = self.login_page.invalid_login(self.data["username"],self.data["password"])
-        assert is_error_toast_displayed, "Error toast not found for invalid credentials"
+        error_text = self.login_page.enterInvalidCredentials(self.data["username"],self.data["password"])
+        assert error_text in self.data["validation"], f"Error toast not found for {key}"
     

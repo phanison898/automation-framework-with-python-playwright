@@ -21,3 +21,8 @@
 ```bash
     pytest
 ```
+
+### Generate Allure report
+```bash
+    allure serve reports/allure-results
+```
