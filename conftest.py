@@ -2,6 +2,7 @@ import json
 import pytest
 from pathlib import Path
 from playwright.sync_api import sync_playwright
+from utils.excel_reader import ExcelReader
 
 @pytest.fixture(scope="session", autouse=True)
 def config():
@@ -46,3 +47,10 @@ def page(context,config):
     page.goto(config["url"])
     yield page
     page.close()
+
+@pytest.fixture(scope="session", autouse=True)
+def excel(config):
+    base_dir = Path(__file__).parent
+    excel_path = base_dir / config.get("test_data_file_path", "data/test_data.xlsx")
+    reader = ExcelReader(excel_path)
+    return reader

@@ -4,5 +4,6 @@
     "headless":false,
     "username":"student",
     "password":"Password123",
-    "invalid_password":"password123"
+    "invalid_password":"password123",
+    "test_data_file_path":"data/test_data.xlsx"
 }
