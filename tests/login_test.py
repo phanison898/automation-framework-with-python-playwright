@@ -37,3 +37,13 @@ class TestLogin(TestBase):
         error_text = self.login_page.enterInvalidCredentials(self.data["username"],self.data["password"])
         assert error_text in self.data["validation"], f"Error toast not found for {key}"
     
+    @allure.title("Links validation")
+    def test_navigation_links(self):
+        link = "Home"
+        expected_title = "Practice Test Automation"
+        key = "valid credentials"
+        self.data = self.excel.get("login",key)
+        self.login_page = LoginPage(self.page)
+        self.logged_in_page = self.login_page.enterValidCredentials(self.data["username"],self.data["password"])
+        actual_title = self.logged_in_page.click_on_nav_link(link)
+        assert expected_title in actual_title, f"Title {expected_title} not found"

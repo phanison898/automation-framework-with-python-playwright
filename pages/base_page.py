@@ -4,10 +4,18 @@ class BasePage:
     def __init__(self, page):
         self.page = page
 
-    def click(self, selector: str):
-        self.page.wait_for_selector(selector)
-        self.page.click(selector)
-
+    def click(self, selector: str, link_name:str = ""):
+        if link_name == "":
+            self.page.wait_for_selector(selector)
+            self.page.click(selector)  
+        else:
+            elements = self.page.locator(selector)
+            count = elements.count()
+            for i in range(count):
+                if elements.nth(i).text_content() == link_name:
+                    elements.nth(i).click()
+                    break
+            
     def enter(self, selector: str, text: str):
         self.page.wait_for_selector(selector)
         self.page.fill(selector, text)
