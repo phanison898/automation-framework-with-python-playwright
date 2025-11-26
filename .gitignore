@@ -67,3 +67,6 @@ MANIFEST
 reports/
 allure-results/
 allure-report/
+
+# for testing locally
+test-area.py

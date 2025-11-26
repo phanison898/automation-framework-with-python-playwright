@@ -15,4 +15,4 @@ class LoggedInPage(BasePage):
     def click_on_nav_link(self, link_name):
         with allure.step(f"Click on {link_name} link"):
             self.click(self.nav_links,link_name)
-            return self.get_page_title()
+            return [self.get_current_url(), self.get_page_title()]
